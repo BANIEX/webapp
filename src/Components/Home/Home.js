@@ -9,35 +9,23 @@ export default function Home(props){
     let viewMovies = moviesList.map((movie, index) => {
 
       let favourite_func = props.favourite_funcProp;
+      let collection_func = props.collection_funcProp;
+
     let favouriteList = props.favouriteListProp;
+    let collectionList = props.collectionListProp;
+
 
 
       let check = "fa fa-check-circle";
-      let plus = "fa fa-plus";
+      let collection_class = "fa fa-plus";
       let fa_color = "";
 
-      // console.log(moviesList);
-
-
-      // console.log(favouriteList);
-
-
-
-      // console.log(favouriteList[index]);
-      // let favourite_id_extract = favouriteList[index].slice(9)
-
-      // if(index < favouriteList.length){
-      //   let favourite_id_extract = favouriteList[index].slice(9);
-      //   fa_color = movie.id == favourite_id_extract ? "red" : ""
-      // }
+     
 
       for(let i = 0; i < favouriteList.length; i++){
         let favourite_id_extract = favouriteList[i].slice(9);
-        // console.log(movie.id)
-        // console.log(favourite_id_extract)
         if (favourite_id_extract == movie.id){
           fa_color = 'red'
-          // console.log("match...")
           break
         }
         else{
@@ -46,7 +34,21 @@ export default function Home(props){
 
       }
 
-      console.log('HI');
+      for(let i= 0; i < collectionList.length; i++){
+        let collection_id_extract = collectionList[i].slice(10);
+        if (collection_id_extract == movie.id){
+          collection_class = "fa fa-check-circle";
+
+          break
+        }
+        else{
+          collection_class = 'fa fa-plus';
+        }
+
+
+      }
+
+      // console.log('HI');
 
       // fa_color = movie.id == favourite_id_extract ? "red" : ""
 
@@ -80,8 +82,9 @@ export default function Home(props){
                       type="button"
                       className="btn btn-sm btn-outline-secondary collection"
                       id={"collection" + movie.id}
+                      onClick={collection_func}
                     >
-                      <i className="fa fa-plus" style={{ color: '' }}></i>
+                      <i className= {collection_class} style={{ color: "" }}></i>
                     </button>
                     <button
                       type="button"
@@ -89,7 +92,10 @@ export default function Home(props){
                       id={"favourite" + movie.id}
                       onClick={favourite_func}
                     >
-                      <i className="fa fa-heart" style={{ color: fa_color }}></i>
+                      <i
+                        className="fa fa-heart"
+                        style={{ color: fa_color }}
+                      ></i>
                     </button>
                   </div>
                   {/* <small className="text-muted">{movie.Runtime}</small> */}

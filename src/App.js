@@ -6,6 +6,7 @@ import Contact from "./Components/Contact/Contact";
 import Register from "./Components/Register/Register";
 import User from "./Components/User/User";
 import Nav from "./Components/Nav/Nav";
+import Collection from "./Components/Collection/Collection";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
@@ -31,24 +32,15 @@ class App extends React.Component {
     };
 
     this.favourite_func = this.favourite_func.bind(this);
+    this.collection_func = this.collection_func.bind(this);
+
+
 
     console.log("Constructor called ...");
-    // console.log(this.state.moviesList);
-
-    // console.log(this.state.favourite);
-    // console.log(this.state.collection);
-
-    // console.log(this.state.length_of_results);
   }
 
-  // let favourite_func(event){
-  //   console.log("clicked");
-
-  // }
 
   favourite_func = (event) => {
-    console.log("favourite function clicked");
-    console.log(event.currentTarget.id);
     let current_style = event.currentTarget.firstChild.style.color;
     console.log(current_style);
     let new_array
@@ -69,6 +61,33 @@ class App extends React.Component {
     }
   };
 
+
+  collection_func = (event)=>{
+    console.log("collection function clicked");
+    console.log(event.currentTarget.id);
+    let current_className = event.currentTarget.firstChild.className;
+    console.log(current_className);
+    let new_array
+
+    if(current_className == 'fa fa-plus'){
+      new_array = this.state.collection.concat(event.currentTarget.id);
+      this.setState({collection: new_array})
+      localStorage.setItem("collection", JSON.stringify(new_array))
+
+    }else{
+      new_array = this.removeItemAll(this.state.collection, event.currentTarget.id);
+      this.setState({collection: new_array})
+      localStorage.setItem("collection", JSON.stringify(new_array));
+
+    }
+
+
+
+
+
+
+  };
+
   removeItemAll(arr, value) {
     var i = 0;
     while (i < arr.length) {
@@ -82,7 +101,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // localStorage.setItem("favourite", JSON.stringify())
 
     //  api request
     axios
@@ -98,9 +116,7 @@ class App extends React.Component {
       });
   }
 
-  componentDidUpdate() {
-    // this.favourite_func();
-  }
+  
 
   render() {
     return (
@@ -115,9 +131,11 @@ class App extends React.Component {
                 collectionListProp={this.state.collection}
                 favouriteListProp={this.state.favourite}
                 favourite_funcProp={this.favourite_func}
+                collection_funcProp={this.collection_func}
               />
             }
           />
+          <Route path="/collection" element={<Collection />} />
         </Routes>
       </>
     );
