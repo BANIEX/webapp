@@ -135,7 +135,18 @@ class App extends React.Component {
               />
             }
           />
-          <Route path="/collection" element={<Collection />} />
+          <Route
+            path="/collection"
+            element={
+              <Collection
+                moviesListProp={this.state.moviesList}
+                collectionListProp={this.state.collection}
+                favouriteListProp={this.state.favourite}
+                favourite_funcProp={this.favourite_func}
+                collection_funcProp={this.collection_func}
+              />
+            }
+          />
         </Routes>
       </>
     );

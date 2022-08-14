@@ -18,9 +18,8 @@ export default function Nav(){
             Collections
           </NavLink>
         </nav>
-        <a className="btn btn-outline-primary" href="#">
-          Log in
-        </a>
+        
+        <Link to="" className="btn btn-outline-primary">Log in</Link>
       </div>
     );
 
