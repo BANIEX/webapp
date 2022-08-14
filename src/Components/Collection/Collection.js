@@ -7,7 +7,7 @@ export default function Collection(props) {
   let collectionList = props.collectionListProp;
   let fa_color = '';
 
-  let collectionMovies = moviesList.filter((movie, index)=>{
+  let collectionMoviesFiltered = moviesList.filter((movie, index)=>{
     for(let element of collectionList){
          let element_id = element.slice(10);
       if (element_id == movie.id){
@@ -19,9 +19,9 @@ export default function Collection(props) {
     return false;
   })
 
-  console.log(collectionMovies);
+  // console.log(collectionMovies);
 
-   collectionMovies = collectionMovies.map((movie, index)=> {
+   let collectionMovies = collectionMoviesFiltered.map((movie, index)=> {
 
     for(let element of favouriteList){
       let element_id = element.slice(9);
@@ -38,6 +38,7 @@ export default function Collection(props) {
     let Poster = url;
 
      return (
+
        <div className="col-md-3 movie_div" key={index} id={movie.id}>
          {/* {favourite_func()} */}
 
@@ -86,12 +87,31 @@ export default function Collection(props) {
 
   })
 
+   let noMovies = ()=>{
+    return (
+      <>
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container text-center">
+            <h1 class="display-4">No Movies added to Collection yet</h1>
+            <p class="lead"></p>
+          </div>
+        </div>
+      </>
+    );
+   }
+
+  let movie = collectionMoviesFiltered.length == 0 ? noMovies() : <div className="row">{collectionMovies}</div>
+
+
   return (
     <>
       <main role="main">
         <div className="album py-5 bg-light">
           <div className="container">
-            <div className="row">{collectionMovies}</div>
+            {/* <div className="row">{movie}</div> */}
+            {/* {noMovies()} */}
+            {movie}
+            
           </div>
         </div>
       </main>
