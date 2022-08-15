@@ -34,7 +34,7 @@ export default function Collection(props) {
       }
     }
 
-    let url = "https://image.tmdb.org/t/p/original/" + movie.backdrop_path;
+    let url = "https://image.tmdb.org/t/p/original/" + movie.poster_path;
     let Poster = url;
 
      return (
@@ -90,10 +90,10 @@ export default function Collection(props) {
    let noMovies = ()=>{
     return (
       <>
-        <div class="jumbotron jumbotron-fluid">
-          <div class="container text-center">
-            <h1 class="display-4">No Movies added to Collection yet</h1>
-            <p class="lead"></p>
+        <div className="jumbotron jumbotron-fluid">
+          <div className="container text-center">
+            <h1 className="display-4">No Movies added to Collection yet</h1>
+            <p className="lead"></p>
           </div>
         </div>
       </>

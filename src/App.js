@@ -33,6 +33,11 @@ class App extends React.Component {
 
     this.favourite_func = this.favourite_func.bind(this);
     this.collection_func = this.collection_func.bind(this);
+    this.search_func = this.search_func.bind(this);
+    this.searchClear_func = this.searchClear_func.bind(this);
+
+
+
 
 
 
@@ -100,6 +105,54 @@ class App extends React.Component {
     return arr;
   }
 
+  search_func = ()=>{
+    // alert("hi");
+    let text_elements_array = document.getElementsByClassName("title");
+    // alert(text_elements_array.length)
+    let movie_div_array = document.getElementsByClassName("movie_div");
+    // alert(movie_div_array.length);
+
+    let input_value = document.getElementById("myInput").value.toUpperCase();
+
+    if(input_value.length > 0){
+       for (let i = 0; i < text_elements_array.length; i++) {
+         let currentText = text_elements_array[i].innerText;
+         if (currentText.toUpperCase().indexOf(input_value) > -1) {
+           movie_div_array[i].style.display = "";
+           // alert("hello")
+         } else {
+           movie_div_array[i].style.display = "none";
+         }
+       }
+
+    }else{
+      for(let element of movie_div_array){
+           element.style.display = "";
+
+
+      }
+    }
+
+    
+  }
+
+  searchClear_func = ()=>{
+    // alert("hi")
+    let input_value = document.getElementById("myInput").value.toUpperCase();
+    // alert(input_value)
+    // console.log("typing...")
+    // console.log(input_value);
+
+    if (input_value == ''){
+      // console.log("empty")
+      this.search_func();
+
+    }
+
+
+
+  }
+
   componentDidMount() {
 
     //  api request
@@ -132,6 +185,8 @@ class App extends React.Component {
                 favouriteListProp={this.state.favourite}
                 favourite_funcProp={this.favourite_func}
                 collection_funcProp={this.collection_func}
+                search_funcProp={this.search_func}
+                searchClear_funcProp={this.searchClear_func}
               />
             }
           />
