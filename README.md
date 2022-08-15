@@ -1,5 +1,10 @@
 Kindly checkout at https://young-wave-18928.herokuapp.com
 
+#TODO
+
+-Add loader
+
+
 # Getting Started with Create React App
 
 

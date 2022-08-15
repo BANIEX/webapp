@@ -94,6 +94,9 @@ export default function Home(props) {
     );
   });
 
+  let movies = viewMovies.length == 0 ? <div class="spinner-border text-muted"></div>: viewMovies;
+
+
   return (
     <>
       <main role="main">
@@ -111,15 +114,21 @@ export default function Home(props) {
               />
             </div>
             <p>
-              
-              <button className="btn btn-lg btn-primary my-2 " onClick={search_func}>Search</button>
+              <button
+                className="btn btn-lg btn-primary my-2 "
+                onClick={search_func}
+              >
+                Search
+              </button>
             </p>
           </div>
         </section>
 
         <div className="album py-5 bg-light">
-          <div className="container">
-            <div className="row">{viewMovies}</div>
+          <div className="container ">
+            {/* <div class="spinner-border text-muted"></div> */}
+
+            <div className="row justify-content-center">{movies} </div>
           </div>
         </div>
       </main>
