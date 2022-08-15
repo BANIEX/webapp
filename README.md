@@ -1,4 +1,4 @@
-Kindly checkout at https://young-wave-18928.herokuapp.com/collection
+Kindly checkout at https://young-wave-18928.herokuapp.com
 
 # Getting Started with Create React App
 
