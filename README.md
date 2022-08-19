@@ -3,6 +3,10 @@ Kindly checkout at https://young-wave-18928.herokuapp.com
 #TODO
 
 -Add loader
+-show latest movies section
+-add to collection latest and non latest movies
+-Lastest movies information or header
+-decentralize collection section when its only one movie
 
 
 # Getting Started with Create React App
